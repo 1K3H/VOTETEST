@@ -11,7 +11,6 @@ public class SetSelectionSize : MonoBehaviour
     void Start()
     {
         RectTransform wholePanelRT = transform.GetComponent<RectTransform>();
-        Debug.Log(wholePanelRT.rect.height);
         selectionOneRT.sizeDelta = new Vector2(wholePanelRT.rect.width / 2, selectionOneRT.sizeDelta.y);
         selectionTwoRT.sizeDelta = new Vector2(wholePanelRT.rect.width / 2, selectionTwoRT.sizeDelta.y);
     }
