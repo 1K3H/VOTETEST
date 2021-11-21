@@ -9,10 +9,8 @@ public class VoteManager : MonoBehaviour
     public enum Mode { CLOSED, LIST, CREATE, VOTE }
     public Mode mode = Mode.CLOSED;
 
-    // 상태 관리
-    // 투표 프로세스의 어떤 창이 떠있는지 알려줄 수 있는 상태가 필요하다.
-
     public GameObject voteListPanel;
+    public GameObject voteCreatePanel;
     public GameObject votePanel;
 
     void Awake() {
@@ -29,9 +27,8 @@ public class VoteManager : MonoBehaviour
         
     }
 
-    public void OpenVoteListPanel()
+    public void ToggleVoteListPanel()
     {
-        // 투표와 관련된 어떤 창도 떠있지 않은 경우와 voteListPanel이 떠있는 경우에만 작동한다. (조건)
         if(mode == Mode.CLOSED)
         {
             voteListPanel.SetActive(true);
@@ -46,6 +43,8 @@ public class VoteManager : MonoBehaviour
 
     public void OpenVoteCreatePanel()
     {
+        voteListPanel.SetActive(false);
+        voteCreatePanel.SetActive(true);
         mode = Mode.CREATE;
     }
 
@@ -53,6 +52,7 @@ public class VoteManager : MonoBehaviour
     {
         // 생성한 투표 데이터 DB로 전송하기
         // ListPanel로 돌아가기
+        BackToVoteListPanel();
     }
 
     public void OpenVotePanel()
@@ -66,5 +66,15 @@ public class VoteManager : MonoBehaviour
     {
         // 투표 정보 DB에 업데이트하기
         // ListPanel로 돌아가기
+        BackToVoteListPanel();
+    }
+
+    public void BackToVoteListPanel()
+    {
+        if(mode == Mode.CREATE) voteCreatePanel.SetActive(false);
+        else if(mode == Mode.VOTE) votePanel.SetActive(false);
+
+        voteListPanel.SetActive(true);
+        mode = Mode.LIST;
     }
 }
