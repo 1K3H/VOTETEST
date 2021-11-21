@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BtnEvent : MonoBehaviour
+public class VoteManager : MonoBehaviour
 {
-    public static BtnEvent BE;
+    public static VoteManager VM;
     public enum Mode { CLOSED, LIST, CREATE, VOTE }
     public Mode mode = Mode.CLOSED;
 
@@ -16,7 +16,7 @@ public class BtnEvent : MonoBehaviour
     public GameObject votePanel;
 
     void Awake() {
-        BE = this;    
+        VM = this;    
     }
 
     void Start()
