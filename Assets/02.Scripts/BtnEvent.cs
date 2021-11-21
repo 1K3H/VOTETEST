@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class BtnEvent : MonoBehaviour
 {
     public static BtnEvent BE;
+    public enum Mode { CLOSED, LIST, CREATE, VOTE }
+    public Mode mode = Mode.CLOSED;
 
     // 상태 관리
     // 투표 프로세스의 어떤 창이 떠있는지 알려줄 수 있는 상태가 필요하다.
