@@ -1,71 +1,114 @@
 {
-    "data":
-    [
+    "data": [
         {
-            "ID":0,
-            "TITLE":"BTS 투표 입니다 우아아아아아아아아아아아아아아아아아아",
-            "USER_NAME":"1K3H",
-            "CREATE_DATE":"2021-11-22",
-            "SELECTION":
-            [
+            "ID": 0,
+            "TITLE": "BTS 투표 입니다 우아아아아아아아아아아아아아아아아아아",
+            "USER_NAME": "1K3H",
+            "CREATE_DATE": "2021-11-22",
+            "SELECTION": [
                 {
-                    "COUNT":40,
-                    "DESC":"선택지1 입니다"
+                    "COUNT": 40,
+                    "DESC": "선택지1 입니다"
                 },
                 {
-                    "COUNT":60,
-                    "DESC":"선택지2 입니다"
+                    "COUNT": 60,
+                    "DESC": "선택지2 입니다"
                 }
             ]
         },
         {
-            "ID":1,
-            "TITLE":"아무 제목 오호호호호호호호호호오오오호모모노아랴디나일",
-            "USER_NAME":"1K3H",
-            "CREATE_DATE":"2021-11-25",
-            "SELECTION":
-            [
+            "ID": 1,
+            "TITLE": "아무 제목 오호호호호호호호호호오오오호모모노아랴디나일",
+            "USER_NAME": "1K3H",
+            "CREATE_DATE": "2021-11-25",
+            "SELECTION": [
                 {
-                    "COUNT":30,
-                    "DESC":"점심 뭐 먹지"
+                    "COUNT": 30,
+                    "DESC": "점심 뭐 먹지"
                 },
                 {
-                    "COUNT":100,
-                    "DESC":"저녁은 뭐 먹지"
+                    "COUNT": 100,
+                    "DESC": "저녁은 뭐 먹지"
                 }
             ]
         },
         {
-            "ID":2,
-            "TITLE":"아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말",
-            "USER_NAME":"1K3H",
-            "CREATE_DATE":"2021-12-22",
-            "SELECTION":
-            [
+            "ID": 2,
+            "TITLE": "아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말",
+            "USER_NAME": "1K3H",
+            "CREATE_DATE": "2021-12-22",
+            "SELECTION": [
                 {
-                    "COUNT":60,
-                    "DESC":"아이스아메리카노"
+                    "COUNT": 60,
+                    "DESC": "아이스아메리카노"
                 },
                 {
-                    "COUNT":21,
-                    "DESC":"바닐라라떼"
+                    "COUNT": 21,
+                    "DESC": "바닐라라떼"
                 }
             ]
         },
         {
-            "ID":3,
-            "TITLE":"에베베베벱베베베베베베베베베베베베베베",
-            "USER_NAME":"비공개",
-            "CREATE_DATE":"2020-02-22",
-            "SELECTION":
-            [
+            "ID": 3,
+            "TITLE": "에베베베벱베베베베베베베베베베베베베베",
+            "USER_NAME": "비공개",
+            "CREATE_DATE": "2020-02-22",
+            "SELECTION": [
                 {
-                    "COUNT":1000,
-                    "DESC":"버거킹"
+                    "COUNT": 1000,
+                    "DESC": "버거킹"
                 },
                 {
-                    "COUNT":21,
-                    "DESC":"KFC"
+                    "COUNT": 21,
+                    "DESC": "KFC"
+                }
+            ]
+        },
+        {
+            "ID": 4,
+            "TITLE": "제발 데이터에 제대로 들어가 주세요 제발~",
+            "USER_NAME": "김승환",
+            "CREATE_DATE": "2021-11-23",
+            "SELECTION": [
+                {
+                    "COUNT": 200,
+                    "DESC": "왼쪽"
+                },
+                {
+                    "COUNT": 300,
+                    "DESC": "오른쪽"
+                }
+            ]
+        },
+        {
+            "ID": 4,
+            "TITLE": "제발 데이터에 제대로 들어가 주세요 제발~",
+            "USER_NAME": "김승환",
+            "CREATE_DATE": "2021-11-23",
+            "SELECTION": [
+                {
+                    "COUNT": 200,
+                    "DESC": "왼쪽"
+                },
+                {
+                    "COUNT": 300,
+                    "DESC": "오른쪽"
+                }
+            ]
+        },
+        {
+            "ID": 4,
+            "TITLE": "제발 데이터에 제대로 들어가 주세요 제발~",
+            "USER_NAME": "김승환",
+            "CREATE_DATE": "2021-11-23",
+            "SELECTION": [
+                {
+                    "COUNT": 200,
+                    "DESC": "왼쪽"
+                },
+                {
+                    "COUNT": 300,
+                    "DESC": "오른쪽"
                 }
             ]
         }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class VoteManager : MonoBehaviour
 {
@@ -44,6 +45,36 @@ public class VoteManager : MonoBehaviour
     {
         voteDataText = Resources.Load("VoteInfo") as TextAsset;
         myVoteData = JsonUtility.FromJson<MyVoteDataArray>(voteDataText.ToString());
+
+        VoteData newVoteData = new VoteData();
+        newVoteData.ID = 4;
+        newVoteData.TITLE = "제발 데이터에 제대로 들어가 주세요 제발~";
+        newVoteData.USER_NAME = "김승환";
+        newVoteData.CREATE_DATE = "2021-11-23";
+        Selection newSelectionData1 = new Selection();
+        newSelectionData1.COUNT = 200;
+        newSelectionData1.DESC = "왼쪽";
+        Selection newSelectionData2 = new Selection();
+        newSelectionData2.COUNT = 300;
+        newSelectionData2.DESC = "오른쪽";
+        Selection[] newSelections = new Selection[]{newSelectionData1, newSelectionData2};
+        newVoteData.SELECTION = newSelections;
+
+        List<VoteData> intermediate_list = new List<VoteData>();
+        for(int i = 0; i < myVoteData.data.Length; i++)
+        {
+            intermediate_list.Add(myVoteData.data[i]);
+        }
+        intermediate_list.Add(newVoteData);
+        myVoteData.data = intermediate_list.ToArray();
+        
+        Debug.Log(myVoteData.data[myVoteData.data.Length-1].SELECTION[0].DESC);
+
+        string json = JsonUtility.ToJson(myVoteData);
+        string path = Application.dataPath + "/Resources/VoteInfo.json";
+
+        File.WriteAllText(path, json);
+
         // Debug.Log(myVoteData.data[0].SELECTION[0].COUNT);
         // Debug.Log(myVoteData.data[1].SELECTION[0].COUNT);
 
@@ -102,10 +133,13 @@ public class VoteManager : MonoBehaviour
     {
         // Debug.Log(ID);
 
+        // Set selection
         for(int i = 0; i < myVoteData.data[ID].SELECTION.Length; i++)
         {
             int num = i;
+            // Set title
             votePanel.transform.Find("Text VoteTitle").GetComponent<Text>().text = myVoteData.data[ID].TITLE;
+            // Set descript
             votePanel.transform.Find($"Panel Selection{num+1}/Button Selection{num+1}/Text Selection{num+1}").GetComponent<Text>().text = myVoteData.data[ID].SELECTION[num].DESC;
         }
 
