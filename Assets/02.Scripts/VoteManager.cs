@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
 
 public class VoteManager : MonoBehaviour
 {
+    public static VoteManager VM;
+
     public enum Mode { CLOSED, LIST, CREATE, VOTE }
-    public Mode mode = Mode.CLOSED;
+    Mode mode = Mode.CLOSED;
 
     public GameObject voteListPanel;
     public GameObject voteListPanelContent;
@@ -41,44 +43,66 @@ public class VoteManager : MonoBehaviour
         public VoteData[] data;
     }
 
+    void Awake()
+    {
+        VM = this;
+    }
+
     void Start()
     {
+        LoadAllData();
+        SetVoteList();
+    }
+
+    public void LoadAllData()
+    {
+        // JSON 파일 불러오기
         voteDataText = Resources.Load("VoteInfo") as TextAsset;
         myVoteData = JsonUtility.FromJson<MyVoteDataArray>(voteDataText.ToString());
+        Debug.Log("LoadAllData");
+    }
 
+    public void InsertData()
+    {
         VoteData newVoteData = new VoteData();
         newVoteData.ID = 4;
         newVoteData.TITLE = "제발 데이터에 제대로 들어가 주세요 제발~";
         newVoteData.USER_NAME = "김승환";
         newVoteData.CREATE_DATE = "2021-11-23";
         Selection newSelectionData1 = new Selection();
-        newSelectionData1.COUNT = 200;
+        newSelectionData1.COUNT = 0;
         newSelectionData1.DESC = "왼쪽";
         Selection newSelectionData2 = new Selection();
-        newSelectionData2.COUNT = 300;
+        newSelectionData2.COUNT = 0;
         newSelectionData2.DESC = "오른쪽";
-        Selection[] newSelections = new Selection[]{newSelectionData1, newSelectionData2};
+        Selection[] newSelections = new Selection[] { newSelectionData1, newSelectionData2 };
         newVoteData.SELECTION = newSelections;
 
         List<VoteData> intermediate_list = new List<VoteData>();
-        for(int i = 0; i < myVoteData.data.Length; i++)
+        for (int i = 0; i < myVoteData.data.Length; i++)
         {
             intermediate_list.Add(myVoteData.data[i]);
         }
         intermediate_list.Add(newVoteData);
         myVoteData.data = intermediate_list.ToArray();
-        
-        Debug.Log(myVoteData.data[myVoteData.data.Length-1].SELECTION[0].DESC);
 
         string json = JsonUtility.ToJson(myVoteData);
         string path = Application.dataPath + "/Resources/VoteInfo.json";
 
-        File.WriteAllText(path, json);
+        // File.WriteAllText(path, json);
+        Debug.Log("InsertData");
+    }
 
-        // Debug.Log(myVoteData.data[0].SELECTION[0].COUNT);
-        // Debug.Log(myVoteData.data[1].SELECTION[0].COUNT);
+    public void DeleteVoteList()
+    {
+        for (int i = 0; i < voteListPanelContent.transform.childCount; i++)
+        {
+            Destroy(voteListPanelContent.transform.GetChild(i).gameObject); 
+        }
+    }
 
-        // Set list
+    public void SetVoteList()
+    {
         for (int i = 0; i < myVoteData.data.Length; i++)
         {
             int idIndex = i;
@@ -92,14 +116,12 @@ public class VoteManager : MonoBehaviour
             // Set Date
             voteBlock.transform.Find("Text Date").GetComponent<Text>().text = myVoteData.data[i].CREATE_DATE;
             // Set button event
-            voteBlock.GetComponent<Button>().onClick.AddListener(()=> OpenVotePanel(myVoteData.data[idIndex].ID));
+            voteBlock.GetComponent<Button>().onClick.AddListener(() => OpenVotePanel(myVoteData.data[idIndex].ID));
         }
+        Debug.Log("SetVoteList");
     }
 
-    void Update()
-    {
-
-    }
+    // Button Events
 
     public void ToggleVoteListPanel()
     {
@@ -125,22 +147,22 @@ public class VoteManager : MonoBehaviour
     public void FinishVoteCreate()
     {
         // 생성한 투표 데이터 DB로 전송하기
-        // ListPanel로 돌아가기
+        InsertData();
+        DeleteVoteList();
+        SetVoteList();
         BackToVoteListPanel();
     }
 
     public void OpenVotePanel(int ID)
     {
-        // Debug.Log(ID);
-
         // Set selection
-        for(int i = 0; i < myVoteData.data[ID].SELECTION.Length; i++)
+        for (int i = 0; i < myVoteData.data[ID].SELECTION.Length; i++)
         {
             int num = i;
             // Set title
             votePanel.transform.Find("Text VoteTitle").GetComponent<Text>().text = myVoteData.data[ID].TITLE;
             // Set descript
-            votePanel.transform.Find($"Panel Selection{num+1}/Button Selection{num+1}/Text Selection{num+1}").GetComponent<Text>().text = myVoteData.data[ID].SELECTION[num].DESC;
+            votePanel.transform.Find($"Panel Selection{num + 1}/Button Selection{num + 1}/Text Selection{num + 1}").GetComponent<Text>().text = myVoteData.data[ID].SELECTION[num].DESC;
         }
 
         voteListPanel.SetActive(false);
@@ -151,7 +173,7 @@ public class VoteManager : MonoBehaviour
     public void FinishVote()
     {
         // 투표 정보 DB에 업데이트하기
-        // ListPanel로 돌아가기
+        LoadAllData();
         BackToVoteListPanel();
     }
 

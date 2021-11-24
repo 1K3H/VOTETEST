@@ -3003,7 +3003,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec51528921fa4a84c8636894b4d307f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 0
   voteListPanel: {fileID: 296650526}
   voteListPanelContent: {fileID: 501697560}
   voteListBlock: {fileID: 8878963168690811766, guid: 0b3c4475b6ea8b04ca6477d67ea949f5, type: 3}

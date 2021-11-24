@@ -63,54 +63,6 @@
                     "DESC": "KFC"
                 }
             ]
-        },
-        {
-            "ID": 4,
-            "TITLE": "제발 데이터에 제대로 들어가 주세요 제발~",
-            "USER_NAME": "김승환",
-            "CREATE_DATE": "2021-11-23",
-            "SELECTION": [
-                {
-                    "COUNT": 200,
-                    "DESC": "왼쪽"
-                },
-                {
-                    "COUNT": 300,
-                    "DESC": "오른쪽"
-                }
-            ]
-        },
-        {
-            "ID": 4,
-            "TITLE": "제발 데이터에 제대로 들어가 주세요 제발~",
-            "USER_NAME": "김승환",
-            "CREATE_DATE": "2021-11-23",
-            "SELECTION": [
-                {
-                    "COUNT": 200,
-                    "DESC": "왼쪽"
-                },
-                {
-                    "COUNT": 300,
-                    "DESC": "오른쪽"
-                }
-            ]
-        },
-        {
-            "ID": 4,
-            "TITLE": "제발 데이터에 제대로 들어가 주세요 제발~",
-            "USER_NAME": "김승환",
-            "CREATE_DATE": "2021-11-23",
-            "SELECTION": [
-                {
-                    "COUNT": 200,
-                    "DESC": "왼쪽"
-                },
-                {
-                    "COUNT": 300,
-                    "DESC": "오른쪽"
-                }
-            ]
         }
     ]
 }
