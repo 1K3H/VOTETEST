@@ -8,7 +8,7 @@ public class VoteManager : MonoBehaviour
 {
     public static VoteManager VM;
 
-    public enum Mode { CLOSED, LIST, CREATE, VOTE }
+    public enum Mode { CLOSED, LIST, CREATE, VOTE, VOTE_RESULT }
     Mode mode = Mode.CLOSED;
 
     public GameObject voteListPanel;
@@ -62,19 +62,19 @@ public class VoteManager : MonoBehaviour
         Debug.Log("LoadAllData");
     }
 
-    public void InsertData()
+    public void InsertData(string title, string selection1, string selection2)
     {
         VoteData newVoteData = new VoteData();
-        newVoteData.ID = 4;
-        newVoteData.TITLE = "제발 데이터에 제대로 들어가 주세요 제발~";
+        newVoteData.ID = myVoteData.data.Length;
+        newVoteData.TITLE = title;
         newVoteData.USER_NAME = "김승환";
         newVoteData.CREATE_DATE = "2021-11-23";
         Selection newSelectionData1 = new Selection();
         newSelectionData1.COUNT = 0;
-        newSelectionData1.DESC = "왼쪽";
+        newSelectionData1.DESC = selection1;
         Selection newSelectionData2 = new Selection();
         newSelectionData2.COUNT = 0;
-        newSelectionData2.DESC = "오른쪽";
+        newSelectionData2.DESC = selection2;
         Selection[] newSelections = new Selection[] { newSelectionData1, newSelectionData2 };
         newVoteData.SELECTION = newSelections;
 
@@ -147,7 +147,10 @@ public class VoteManager : MonoBehaviour
     public void FinishVoteCreate()
     {
         // 생성한 투표 데이터 DB로 전송하기
-        InsertData();
+        string title = voteCreatePanel.transform.Find("InputField Title/Text").GetComponent<Text>().text;
+        string selection1 = voteCreatePanel.transform.Find("InputField Selection1/Text").GetComponent<Text>().text;
+        string selection2 = voteCreatePanel.transform.Find("InputField Selection2/Text").GetComponent<Text>().text; 
+        InsertData(title, selection1, selection2);
         DeleteVoteList();
         SetVoteList();
         BackToVoteListPanel();
