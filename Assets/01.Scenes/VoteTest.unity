@@ -1034,7 +1034,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -1735,7 +1735,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &578475343
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3461,6 +3461,9 @@ MonoBehaviour:
   voteListBlock: {fileID: 8878963168690811766, guid: 0b3c4475b6ea8b04ca6477d67ea949f5, type: 3}
   voteCreatePanel: {fileID: 578475342}
   votePanel: {fileID: 16362709}
+  inputTitle: {fileID: 614762426}
+  inputSelection1: {fileID: 1206865233}
+  inputSelection2: {fileID: 1961119927}
 --- !u!1 &1116403186
 GameObject:
   m_ObjectHideFlags: 0
